@@ -1,7 +1,7 @@
-1 . Mở Terminal tại thư mục dự án và chạy lệnh cài đặt thư viện: 
+Mở Terminal tại thư mục dự án và chạy lệnh cài đặt thư viện: 
 ```bash
 pip install -r requirements.txt
-2 . Thiết Lập Mạch Khởi Động ESP32 (Wokwi)
+Thiết Lập Mạch Khởi Động ESP32 (Wokwi)
   - Truy cập vào trang mô phỏng mạch https://wokwi.com/projects/464901992023857153 bằng wokwi
   - Bấm chạy mạch để kết nối mạng ảo và MQTT Broker.
 **Quy Trình Khởi Chạy Hệ Thống Test**
