@@ -1,0 +1,5 @@
+Flask==3.0.0
+flask-cors==4.0.0
+ultralytics==8.0.0
+opencv-python==4.8.0.76
+requests==2.31.0

@@ -1,0 +1,13 @@
+# Bỏ qua các file thư mục cache của Python
+__pycache__/
+*.pyc
+
+# Bỏ qua file trọng số của mô hình AI (YOLO tự tải về khi chạy)
+yolov8n.pt
+
+# Bỏ qua video nặng (các thành viên sẽ tự tải hoặc dùng link drive)
+traffic.mp4
+
+# Bỏ qua các file môi trường ảo (nếu có)
+venv/
+.env
