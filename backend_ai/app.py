@@ -58,13 +58,13 @@ def update_traffic():
         system_state["ai_decision"] = "Đông-Tây vắng -> Cắt pha xanh Đông-Tây!"
         print("[AI] Gửi lệnh VANG_XE_DT")
 
-    # LOGIC 2: Ùn tắc -> Kéo dài đèn xanh (Mốc 15 xe)
-    elif count_BN >= 15 and "Truc B-N: Xanh" in hw_status:
+    # LOGIC 2: Ùn tắc -> Kéo dài đèn xanh (Mốc 5 xe)
+    elif count_BN >= 5 and "Truc B-N: Xanh" in hw_status:
         mqtt_client.publish(TOPIC_CONTROL, "KEO_DAI_BN")
         system_state["ai_decision"] = "Bắc-Nam ùn tắc -> Tăng thời gian đèn!"
         print("[AI] Gửi lệnh KEO_DAI_BN")
         
-    elif count_DT >= 15 and "Truc D-T: Xanh" in hw_status:
+    elif count_DT >= 5 and "Truc D-T: Xanh" in hw_status:
         mqtt_client.publish(TOPIC_CONTROL, "KEO_DAI_DT")
         system_state["ai_decision"] = "Đông-Tây ùn tắc -> Tăng thời gian đèn!"
         print("[AI] Gửi lệnh KEO_DAI_DT")
@@ -83,6 +83,13 @@ def trigger_emergency():
     mqtt_client.publish(TOPIC_CONTROL, "KHAN_CAP")
     system_state["ai_decision"] = "CẢNH BÁO: Kích hoạt xe ưu tiên!"
     return jsonify({"status": "Đã gửi lệnh khẩn cấp"})
+
+@app.route('/api/cancel_emergency', methods=['POST'])
+def cancel_emergency():
+    # Gửi lệnh yêu cầu ESP32 trở lại chu kỳ bình thường
+    mqtt_client.publish(TOPIC_CONTROL, "BINH_THUONG") 
+    system_state["ai_decision"] = "Đã hủy khẩn cấp, điều phối bình thường"
+    return jsonify({"status": "Đã khôi phục trạng thái"})
 
 if __name__ == '__main__':
     threading.Thread(target=start_mqtt, daemon=True).start()

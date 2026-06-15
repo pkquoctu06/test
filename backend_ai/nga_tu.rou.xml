@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes>
+    <vType id="car" accel="0.8" decel="4.5" sigma="0.5" length="5" minGap="2.5" maxSpeed="16.67" guiShape="passenger"/>
+
+    <route id="route_N_S" edges="E0 E1"/>
+    <route id="route_S_N" edges="-E1 -E0"/>
+    <route id="route_E_W" edges="-E2 E3"/>
+    <route id="route_W_E" edges="-E3 E2"/>
+
+    <flow id="flow_N_S" type="car" route="route_N_S" begin="0" end="2000" probability="0.15" color="red"/>
+    <flow id="flow_S_N" type="car" route="route_S_N" begin="0" end="2000" probability="0.15" color="blue"/>
+    <flow id="flow_E_W" type="car" route="route_E_W" begin="0" end="2000" probability="0.10" color="green"/>
+    <flow id="flow_W_E" type="car" route="route_W_E" begin="0" end="2000" probability="0.10" color="yellow"/>
+</routes>
